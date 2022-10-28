@@ -43,8 +43,6 @@ bool ItemEventFilter::eventFilter(QObject* obj, QEvent* event)
 
 
 
-
-
 Item::Item(QListWidget* parent)
     : QObject()
     , QListWidgetItem(parent)
@@ -68,6 +66,10 @@ Item::Item(QListWidget* parent)
     parent->setItemWidget(this, label);
 }
 
+bool Item::operator <(const QListWidgetItem& other) const
+{
+    return this->text().compare(static_cast<const Item&>(other).text(), Qt::CaseInsensitive) < 0;
+}
 
 void Item::startEdit()
 {
