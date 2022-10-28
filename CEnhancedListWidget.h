@@ -62,6 +62,8 @@ namespace CEnhancedList
             this->m_colorReadForegroundSelected = readFgS;
         }
 
+        virtual bool operator <(const QListWidgetItem& other) const;
+
     private:
         QListWidget* m_parent;
 
